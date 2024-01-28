@@ -14,6 +14,16 @@
             <input type="password" name="p" placeholder="Password" required="required" />
             <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
         </form>
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Evita el envío del formulario predeterminado
+                
+                // Lógica de autenticación (puedes agregar tu lógica aquí)
+
+                // Redirige a tu formulario si la autenticación es exitosa
+                window.location.href = "/InscripcionOESAT/formulario.html";
+            });
+        </script>
     </div>
 
 </body>
