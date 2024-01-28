@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>FICHA DE INSCRIPCIÓN 2023</title>
+    <style>
+    
+    </style>
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+     <script src="/InscripcionOESAT/scripts/script.js"></script>
+</head>
+
+<body>
+
+    <!-- Cabecera con imagen -->
+    <header>
+        <img src="LogoOesat.jpg" alt="LogoOesat">
+        <h1>Registro de Alumno</h1>
+    </header>
+
+    <div class="container-lg">
+        <form>
+            <!-- Datos del ALUMNO/A -->
+            <label for="txtbNombres">NOMBRES:</label>
+            <input type="text" id="txtbNombres" name="txtbNombres" required>
+
+            <label for="txtbApellidos">APELLIDOS:</label>
+            <input type="text" id="txtbApellidos" name="txtbApellidos" required>
+
+            <label for="txtbDNIAlumno">DNI:</label>
+            <input type="text" id="txtbDNIAlumno" name="txtbDNIAlumno" required>
+
+            <label for="txtbFechaNacimiento">FECHA DE NAC.:</label>
+            <input type="date" id="txtbFechaNacimiento" name="txtbFechaNacimiento" required>
+
+            <label for="txtbDomicilio">DOMICILIO:</label>
+            <input type="text" id="txtbDomicilio" name="txtbDomicilio" required>
+            <!-- Nueva sección para Nacionalidad -->
+            <label for="nacionalidad">Nacionalidad:</label>
+            <select id="nacionalidad" name="nacionalidad" required>
+                <option value="afgana">Afgana</option>
+                <option value="albanesa">Albanesa</option>
+                <option value="alemana">Alemana</option>
+                <option value="argentina">Argentina</option>
+                <option value="australiana">Australiana</option>
+                <option value="austriaca">Austriaca</option>
+                <option value="belga">Belga</option>
+                <option value="brasileña">Brasileña</option>
+                <option value="canadiense">Canadiense</option>
+                <option value="chilena">Chilena</option>
+                <option value="china">China</option>
+                <option value="colombiana">Colombiana</option>
+                <option value="costarricense">Costarricense</option>
+                <option value="cubana">Cubana</option>
+                <option value="danesa">Danesa</option>
+                <option value="ecuatoriana">Ecuatoriana</option>
+                <option value="egipcia">Egipcia</option>
+                <option value="española">Española</option>
+                <option value="estadounidense">Estadounidense</option>
+                <option value="finlandesa">Finlandesa</option>
+                <option value="francesa">Francesa</option>
+                <option value="griega">Griega</option>
+                <option value="guatemalteca">Guatemalteca</option>
+                <option value="holandesa">Holandesa</option>
+                <option value="hondureña">Hondureña</option>
+                <option value="hungara">Húngara</option>
+                <option value="india">India</option>
+                <option value="indonesa">Indonesa</option>
+                <option value="irlandesa">Irlandesa</option>
+                <option value="israelita">Israelita</option>
+                <option value="italiana">Italiana</option>
+                <option value="japonesa">Japonesa</option>
+                <option value="jordana">Jordana</option>
+                <option value="libanesa">Libanesa</option>
+                <option value="luxemburguesa">Luxemburguesa</option>
+                <option value="malasia">Malasia</option>
+                <option value="mexicana">Mexicana</option>
+                <option value="nicaraguense">Nicaragüense</option>
+                <option value="noruega">Noruega</option>
+                <option value="neozelandesa">Neozelandesa</option>
+                <option value="panameña">Panameña</option>
+                <option value="paraguaya">Paraguaya</option>
+                <option value="peruana">Peruana</option>
+                <option value="polaca">Polaca</option>
+                <option value="portuguesa">Portuguesa</option>
+                <option value="puertorriqueña">Puertorriqueña</option>
+                <option value="dominicana">Dominicana</option>
+                <option value="rumana">Rumana</option>
+                <option value="rusa">Rusa</option>
+                <option value="saudita">Saudita</option>
+                <option value="sudafricana">Sudafricana</option>
+                <option value="sueca">Sueca</option>
+                <option value="suiza">Suiza</option>
+                <option value="tailandesa">Tailandesa</option>
+                <option value="taiwanesa">Taiwanesa</option>
+                <option value="turca">Turca</option>
+                <option value="ucraniana">Ucraniana</option>
+                <option value="uruguaya">Uruguaya</option>
+                <option value="venezolana">Venezolana</option>
+                <option value="vietnamita">Vietnamita</option>
+            </select>
+
+            <label for="txtbCelularAlumno">CEL:</label>
+            <input type="tel" id="txtbCelularAlumno" name="txtbCelularAlumno" required pattern="[0-9]+"
+                title="Por favor, introduce solo números">
+
+            <p>Completar en caso de menores de 18 años.</p>
+
+            <!-- Datos de la FAMILIA -->
+            <label for="txtbNombrePadre">NOMBRE DEL PADRE:</label>
+            <input type="text" id="txtbNombrePadre" name="txtbNombrePadre" required>
+
+            <label for="txtbDNIPadre">DNI DEL PADRE:</label>
+            <input type="text" id="txtbDNIPadre" name="txtbDNIPadre" required>
+
+            <label for="txtbNombreMadre">NOMBRE DE LA MADRE:</label>
+            <input type="text" id="txtbNombreMadre" name="txtbNombreMadre" required>
+
+            <label for="txtbDNIMadre">DNI DE LA MADRE:</label>
+            <input type="text" id="txtbDNIMadre" name="txtbDNIMadre" required>
+
+            <label for="txtbCelularPadre">CEL DEL PADRE:</label>
+            <input type="tel" id="txtbCelularPadre" name="txtbCelularPadre" required pattern="[0-9]+"
+                title="Por favor, introduce solo números">
+
+            <label for="txtbCelularMadre">CEL DE LA MADRE:</label>
+            <input type="tel" id="txtbCelularMadre" name="txtbCelularMadre" required pattern="[0-9]+"
+                title="Por favor, introduce solo números">
+
+
+            <label for="orquesta">Orquesta:</label>
+            <select id="orquesta" name="orquesta" required>
+                <option value="">Seleccionar...</option>
+
+                <option value="Pre-Orquesta">Pre-Orquesta</option>
+                <option value="Taller">Taller de iniciación Musical</option>
+                <option value="Inicial">Orquesta Inicial</option>
+                <option value="Juvenil">Orquesta Juvenil</option>
+                <option value="Danza">Kusikuy Danza</option>
+            </select>
+
+
+
+
+            <label for="instrumento">Instrumento:</label>
+            <select id="instrumento" name="instrumento" required>
+                <option value="">Seleccionar...</option>
+
+                <option value="Contrabajo">Contrabajo</option>
+                <option value="Violin">Violín</option>
+                <option value="Viola">Viola</option>
+                <option value="Violoncello">Violoncello</option>
+                <option value="Guitarra">Guitarra</option>
+                <option value="Percusión">Percusión</option>
+                <option value="Flauta">Flauta</option>
+                <option value="Clarinete">Clarinete</option>
+                <option value="Bandoneon">Bandoneón</option>
+                <option value="Bandoneon">Trompeta</option>
+            </select>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+
+            <!-- Sección Autorización y Tratamiento Médico -->
+            <div class="form-section">
+                <label>Autoriza a retirar solo/a del establecimiento de la Orquesta:</label>
+                <div class="radio-container">
+                    <input type="radio" id="autorizaSi" name="autoriza" value="SI">
+                    <label class="radio-label" for="autorizaSi">SI</label>
+                    <input type="radio" id="autorizaNo" name="autoriza" value="NO">
+                    <label class="radio-label" for="autorizaNo">NO</label>
+                </div>
+            </div>
+
+            <!-- Sección Episodio Psicomotriz y Particularidad -->
+            <div class="form-section">
+                <label>¿Está realizando algún tratamiento médico que requiera de un control diario o periódico?</label>
+                <div class="radio-container">
+                    <input type="radio" id="tratamientoSi" name="tratamiento" value="SI">
+                    <label for="tratamientoSi">SI</label>
+                    <input type="radio" id="tratamientoNo" name="tratamiento" value="NO">
+                    <label for="tratamientoNo">NO</label>
+                </div>
+                <label for="txtbtratamientoCual">¿Cuál?</label>
+                <input type="text" id="txtbtratamientoCual" name="txtbtratamientoCual">
+                <br>
+                <br>
+
+                <label>¿Tuvo algún episodio psicomotriz? (Ataque de pánico, ansiedad, tensión, angustia emocional,
+                    inquietud, etc.)</label>
+                <div class="radio-container">
+                    <input type="radio" id="psicomotrizSi" name="psicomotriz" value="SI">
+                    <label for="psicomotrizSi">SI</label>
+                    <input type="radio" id="psicomotrizNo" name="psicomotriz" value="NO">
+                    <label for="psicomotrizNo">NO</label>
+                </div>
+                <label for="txtbpsicomotrizCual">¿Cuál?</label>
+                <input type="text" id="txtbpsicomotrizCual" name="txtbpsicomotrizCual">
+                <br>
+                <br>
+
+                <label>¿Considera compartir alguna particularidad que los/as docentes debamos tener en cuenta?</label>
+                <div class="radio-container">
+                    <input type="radio" id="particularidadSi" name="particularidad" value="SI">
+                    <label for="particularidadSi">SI</label>
+                    <input type="radio" id="particularidadNo" name="particularidad" value="NO">
+                    <label for="particularidadNo">NO</label>
+                </div>
+                <label for="txtbParticularidadCual">¿Cuál?</label>
+                <input type="text" id="txtbParticularidadCual" name="txtbParticularidadCual">
+            </div>
+
+            <div class="form-section">
+                <!-- Firma y aclaración del padre/tutor -->
+                <label for="txtbFirmaPadre">Firma y aclaración del padre/tutor:</label>
+                <input type="text" id="txtbFirmaPadre" name="txtbFirmaPadre" required>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- Firma y aclaración de la madre/tutora -->
+                <label for="txtbFirmaMadre">Firma y aclaración de la madre/tutora:</label>
+                <input type="text" id="txtbFirmaMadre" name="txtbFirmaMadre" required>
+            </div>
+
+            <br>
+            <br>
+            <label>
+                <input type="checkbox" id="checkCesion" required>
+                CESIÓN DE DERECHOS DE USO DE IMAGEN
+            </label>
+            <button id="btnLeer" >Leer</button>
+
+            <!-- Botón de Registro -->
+            <button type="submit">Registrar</button>
+            <br>
+            <!-- Nota al pie -->
+            <p>* Doc. que acompaña: partida de nacimiento, fot. dni (alum madre padre), certificado judicial de
+                tenencia, acuerdo extrajudicial o judicial de tenencia.</p>
+        </form>
+    </div>
+
+</body>
+
+</html>
