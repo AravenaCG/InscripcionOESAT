@@ -17,11 +17,19 @@
         <script>
             document.getElementById("loginForm").addEventListener("submit", function (event) {
                 event.preventDefault(); // Evita el envío del formulario predeterminado
-                
-                // Lógica de autenticación (puedes agregar tu lógica aquí)
 
-                // Redirige a tu formulario si la autenticación es exitosa
-                window.location.href = "/InscripcionOESAT/formulario.html";
+                // Lógica de autenticación
+                var usernameInput = document.getElementById("username").value;
+                var passwordInput = document.getElementById("password").value;
+
+                // Verifica si el nombre de usuario y la contraseña son correctos
+                if (usernameInput === "asd" && passwordInput === "asdqwe") {
+                    // Redirige a tu formulario si la autenticación es exitosa
+                    window.location.href = "/InscripcionOESAT/formulario.html";
+                } else {
+                    // Muestra un mensaje de error (puedes personalizarlo según tus necesidades)
+                    alert("Credenciales incorrectas. Intenta de nuevo.");
+                }
             });
         </script>
     </div>
