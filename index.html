@@ -7,32 +7,49 @@
 </head>
 <body>
 
-    <div class="login">
-        <h1>Login INSCRIPCIÓN OESAT</h1>
-        <form method="post" action="/InscripcionOESAT/formulario.html">
-            <input type="text" name="u" placeholder="Username" required="required" />
-            <input type="password" name="p" placeholder="Password" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
-        </form>
-        <script>
-            document.getElementById("loginForm").addEventListener("submit", function (event) {
-                event.preventDefault(); // Evita el envío del formulario predeterminado
+<div class="login">
+    <h1>Login INSCRIPCIÓN OESAT</h1>
+    <form id="loginForm" method="post" action="/InscripcionOESAT/formulario.html">
+        <input type="text" id="email" name="u" placeholder="Email" required="required" />
+        <input type="password" id="password" name="p" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
+    </form>
+</div>
 
-                // Lógica de autenticación
-                var usernameInput = document.getElementById("username").value;
-                var passwordInput = document.getElementById("password").value;
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita el envío del formulario predeterminado
 
-                // Verifica si el nombre de usuario y la contraseña son correctos
-                if (usernameInput === "asd" && passwordInput === "asdqwe") {
-                    // Redirige a tu formulario si la autenticación es exitosa
-                    window.location.href = "/InscripcionOESAT/formulario.html";
-                } else {
-                    // Muestra un mensaje de error (puedes personalizarlo según tus necesidades)
-                    alert("Credenciales incorrectas. Intenta de nuevo.");
-                }
-            });
-        </script>
-    </div>
+        var emailInput = document.getElementById("email").value;
+        var passwordInput = document.getElementById("password").value;
+
+        // Realiza la solicitud HTTP a la API de JwtAuthAPI para autenticar al usuario
+        fetch('https://localhost:7231/usuario/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: emailInput,
+                password: passwordInput
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Credenciales incorrectas');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Si la autenticación es exitosa, redirige al formulario.html
+            window.location.href = "/InscripcionOESAT/formulario.html";
+        })
+        .catch(error => {
+            // Si ocurre un error en la autenticación, muestra un mensaje de error
+            alert(error.message);
+        });
+    });
+</script>
 
 </body>
 </html>
