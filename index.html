@@ -19,12 +19,12 @@
 <script>
     document.getElementById("loginForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Evita el envío del formulario predeterminado
-
+        var url = 'https://localhost:7231/usuario/login';
         var emailInput = document.getElementById("email").value;
         var passwordInput = document.getElementById("password").value;
 
         // Realiza la solicitud HTTP a la API de JwtAuthAPI para autenticar al usuario
-        fetch('https://localhost:7231/usuario/login', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
