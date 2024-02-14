@@ -19,7 +19,7 @@
 <script>
     document.getElementById("loginForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Evita el envío del formulario predeterminado
-        var url = 'https://localhost:7231/usuario/login';
+        var url = 'https://localhost:7158/orquestaGateway/login';
         var emailInput = document.getElementById("email").value;
         var passwordInput = document.getElementById("password").value;
 
@@ -41,9 +41,12 @@
             return response.json();
         })
         .then(data => {
-            // Si la autenticación es exitosa, redirige al formulario.html
-            window.location.href = "/InscripcionOESAT/formulario.html";
-        })
+        // Si la autenticación es exitosa, almacena el token en el almacenamiento local del navegador
+        localStorage.setItem("accessToken", data.token);
+
+        // Redirige al formulario.html
+        window.location.href = "/InscripcionOESAT/formulario.html";
+    })
         .catch(error => {
             // Si ocurre un error en la autenticación, muestra un mensaje de error
             alert(error.message);

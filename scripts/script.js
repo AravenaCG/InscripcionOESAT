@@ -16,7 +16,21 @@
                     instrumentoSelect.addClass("disabled");
                 }
             })
+            $('#instrumento').change(function(){
+                var instrumentoSelect = $("#instrumento");
+                var profesorSelect = $("#profesor"); // Debes seleccionar el elemento profesor dentro de esta función
+                
+                if (instrumentoSelect.val() == "Violin") { // Asegúrate de que coincida exactamente con el valor de la opción
+                    // Si se selecciona "Violín", habilita la lista de profesores
+                    profesorSelect.prop('disabled', false); // Usa prop() para habilitar/deshabilitar elementos
+                } else {
+                    // Si se selecciona otro instrumento, deshabilita la lista de profesores y selecciona la opción predeterminada
+                    profesorSelect.prop('disabled', true);
+                    profesorSelect.val(""); // Restablece el valor seleccionado
+                }
+            });
             
+
             $('#chkMenor18').change(function() {
                 // Si el checkbox está seleccionado, habilita los campos de los padres/madres
                 if ($(this).is(':checked')) {
@@ -116,7 +130,8 @@
                     telefonoTutor: $("#txtbCelularPadre").val(),
                     telefonoTutor2: $("#txtbCelularMadre").val(),
                     orquesta: $("#orquesta").val(),
-                    instrumentoId: $("#instrumento").val(),  // Convierte el valor a entero si es necesario
+                    instrumentoId:parseInt($("#instrumento").val()),
+                    cursoProfe:$("#profesor").val(),
                    // rutaFoto: "",  // Agrega el valor correspondiente si tienes un campo para la ruta de la foto
                     activo: true,  // o false según sea necesario
                     asegurado: false,  // o false según sea necesario
@@ -132,18 +147,24 @@
                 // Realiza la solicitud AJAX al endpoint de la API
                 $.ajax({
                     type: "POST",
-                    url: "https://localhost:7182/estudiante/save", // Reemplaza con la URL correcta
+                    url: "https://localhost:7158/orquestaGateway/estudiante/save",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(formData),
                     dataType: "json",
-                    success: function (data) {
-                          alert("Solicitud exitosa");  // Mensaje de éxito, puedes cambiarlo según tu necesidad
-                        // console.log(data); // Aquí accedes al cuerpo de la respuesta
-                        //  console.log(data.Estudiante); // Puedes acceder a propiedades específicas si las hay
+                    beforeSend: function(xhr) {
+                        var token = localStorage.getItem("accessToken");
+                        if (token) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+                        }
                     },
-                    error: function (error) {
+                    success: function(data) {
+                        alert("Solicitud exitosa");
+                        // console.log(data);
+                        // console.log(data.Estudiante);
+                    },
+                    error: function(error) {
                         // Maneja el error aquí
-                        //    alert("Error en la solicitud");  // Mensaje de error, puedes cambiarlo según tu necesidad
+                        // alert("Error en la solicitud");
                         // console.error(error);
                     }
                 });
