@@ -107,29 +107,33 @@
             <label for="txtbCelularAlumno">CEL:</label>
             <input type="tel" id="txtbCelularAlumno" name="txtbCelularAlumno" required pattern="[0-9]+"
                 title="Por favor, introduce solo números">
+                <label for="txtbEmailAlumno">Email:</label>
+                <input type="tel" id="txtbEmailAlumno" name="txtbEmailAlumno" 
+                required>
+                <br>
+                <br>
 
-            <p>Completar en caso de menores de 18 años.</p>
-
-            <!-- Datos de la FAMILIA -->
-            <label for="txtbNombrePadre">NOMBRE DEL PADRE:</label>
-            <input type="text" id="txtbNombrePadre" name="txtbNombrePadre" required>
-
-            <label for="txtbDNIPadre">DNI DEL PADRE:</label>
-            <input type="text" id="txtbDNIPadre" name="txtbDNIPadre" required>
-
-            <label for="txtbNombreMadre">NOMBRE DE LA MADRE:</label>
-            <input type="text" id="txtbNombreMadre" name="txtbNombreMadre" required>
-
-            <label for="txtbDNIMadre">DNI DE LA MADRE:</label>
-            <input type="text" id="txtbDNIMadre" name="txtbDNIMadre" required>
-
-            <label for="txtbCelularPadre">CEL DEL PADRE:</label>
-            <input type="tel" id="txtbCelularPadre" name="txtbCelularPadre" required pattern="[0-9]+"
-                title="Por favor, introduce solo números">
-
-            <label for="txtbCelularMadre">CEL DE LA MADRE:</label>
-            <input type="tel" id="txtbCelularMadre" name="txtbCelularMadre" required pattern="[0-9]+"
-                title="Por favor, introduce solo números">
+                <label for="chkMenor18">¿Es menor de 18 años?</label>
+                <input type="checkbox" id="chkMenor18">
+                
+                <!-- Datos de la FAMILIA -->
+                <label for="txtbNombrePadre">NOMBRE DEL PADRE:</label>
+                <input type="text" id="txtbNombrePadre" name="txtbNombrePadre" disabled>
+                
+                <label for="txtbDNIPadre">DNI DEL PADRE:</label>
+                <input type="text" id="txtbDNIPadre" name="txtbDNIPadre" disabled>
+                
+                <label for="txtbNombreMadre">NOMBRE DE LA MADRE:</label>
+                <input type="text" id="txtbNombreMadre" name="txtbNombreMadre" disabled>
+                
+                <label for="txtbDNIMadre">DNI DE LA MADRE:</label>
+                <input type="text" id="txtbDNIMadre" name="txtbDNIMadre" disabled>
+                
+                <label for="txtbCelularPadre">CEL DEL PADRE:</label>
+                <input type="tel" id="txtbCelularPadre" name="txtbCelularPadre" disabled pattern="[0-9]+" title="Por favor, introduce solo números">
+                
+                <label for="txtbCelularMadre">CEL DE LA MADRE:</label>
+                <input type="tel" id="txtbCelularMadre" name="txtbCelularMadre" disabled pattern="[0-9]+" title="Por favor, introduce solo números">
 
 
             <label for="orquesta">Orquesta:</label>
@@ -220,18 +224,19 @@
                 <input type="text" id="txtbParticularidadCual" name="txtbParticularidadCual">
             </div>
 
-            <div class="form-section">
+        <!--    <div class="form-section">-->
                 <!-- Firma y aclaración del padre/tutor -->
-                <label for="txtbFirmaPadre">Firma y aclaración del padre/tutor:</label>
+             <!--    <label for="txtbFirmaPadre">Firma y aclaración del padre/tutor:</label>
                 <input type="text" id="txtbFirmaPadre" name="txtbFirmaPadre" required>
                 <br>
                 <br>
                 <br>
                 <br>
-                <!-- Firma y aclaración de la madre/tutora -->
-                <label for="txtbFirmaMadre">Firma y aclaración de la madre/tutora:</label>
+                 Firma y aclaración de la madre/tutora -->
+                
+                <!-- <label for="txtbFirmaMadre">Firma y aclaración de la madre/tutora:</label>
                 <input type="text" id="txtbFirmaMadre" name="txtbFirmaMadre" required>
-            </div>
+            </div>-->
 
             <br>
             <br>

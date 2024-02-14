@@ -15,7 +15,64 @@
                     instrumentoSelect.prop("disabled", true);
                     instrumentoSelect.addClass("disabled");
                 }
+            })
+            
+            $('#chkMenor18').change(function() {
+                // Si el checkbox está seleccionado, habilita los campos de los padres/madres
+                if ($(this).is(':checked')) {
+                    $("#txtbNombrePadre").prop("disabled", false);
+                    $("#txtbDNIPadre").prop("disabled", false);
+                    $("#txtbNombreMadre").prop("disabled", false);
+                    $("#txtbDNIMadre").prop("disabled", false);
+                    $("#txtbCelularPadre").prop("disabled", false);
+                    $("#txtbCelularMadre").prop("disabled", false);
+                } else {
+                    // Si el checkbox no está seleccionado, deshabilita los campos de los padres/madres
+                    $("#txtbNombrePadre").prop("disabled", true).val("");
+                    $("#txtbDNIPadre").prop("disabled", true).val("");
+                    $("#txtbNombreMadre").prop("disabled", true).val("");
+                    $("#txtbDNIMadre").prop("disabled", true).val("");
+                    $("#txtbCelularPadre").prop("disabled", true).val("");
+                    $("#txtbCelularMadre").prop("disabled", true).val("");
+                }
+            })
+            
+            $('input[name="autoriza"]').change(function() {
+                if ($(this).val() === "SI") {
+                    // Si se selecciona "SI", establece autoretiro en true
+                    formData.autoretiro = true;
+                } else {
+                    // Si se selecciona "NO", establece autoretiro en false
+                    formData.autoretiro = false;
+                }
+            })
+            function toggleCamposDeTexto(value, textBoxId) {
+                $("#" + textBoxId).prop("disabled", value !== "SI");
+                // Si el valor es "SI", habilita el campo de texto; de lo contrario, lo deshabilita
+                if (value === "SI") {
+                    $("#" + textBoxId).prop("required", true);
+                } else {
+                    $("#" + textBoxId).prop("required", false);
+                }
+            }
+        
+            // Escucha los cambios en el radio button de tratamiento médico
+            $('input[name="tratamiento"]').change(function() {
+                toggleCamposDeTexto($(this).val(), "txtbtratamientoCual");
             });
+        
+            // Escucha los cambios en el radio button de episodio psicomotriz
+            $('input[name="psicomotriz"]').change(function() {
+                toggleCamposDeTexto($(this).val(), "txtbpsicomotrizCual");
+            });
+        
+            // Escucha los cambios en el radio button de particularidad
+            $('input[name="particularidad"]').change(function() {
+                toggleCamposDeTexto($(this).val(), "txtbParticularidadCual");
+            });
+            
+
+            
 
             $("#btnLeer").click(function () {
                 // Muestra un alert con el texto especificado
@@ -46,21 +103,27 @@
                     estudianteId: nuevoGuid,  // Puedes generar un nuevo GUID si es necesario
                     nombre: $("#txtbNombres").val(),
                     apellido: $("#txtbApellidos").val(),
-                    fechaNacimiento: $("#txtbFechaNacimiento").val(),
                     documento: $("#txtbDNIAlumno").val(),
-                    telefono: $("#txtbCelularAlumno").val(),
-                    //   direccion: "",  // Agrega el valor correspondiente
-                    //   email: "",  // Agrega el valor correspondiente
-                    //   instrumentoId: parseInt($("#instrumento").val()),  // Convierte el valor a entero
-                    //   rutaFoto: "",  // Agrega el valor correspondiente
-                    activo: true,  // o false según sea necesario
+                    fechaNacimiento: $("#txtbFechaNacimiento").val(),
+                    direccion: $("#txtbDomicilio").val(),
+                    nacionalidad: $("#nacionalidad").val(),
+                    telefono: $("#txtbCelularAlumno").val(),  
+                    email: $("txtbEmailAlumno").val(),  // Agrega el valor correspondiente si tienes un campo para el email
                     nombreTutor: $("#txtbNombrePadre").val(),
-                    telefonoTutor: $("#txtbCelularPadre").val(),
-                    asegurado: false,  // o false según sea necesario
                     documentoTutor: $("#txtbDNIPadre").val(),
                     nombreTutor2: $("#txtbNombreMadre").val(),
                     documentoTutor2: $("#txtbDNIMadre").val(),
-                    telefonoTutor2: $("#txtbCelularMadre").val()
+                    telefonoTutor: $("#txtbCelularPadre").val(),
+                    telefonoTutor2: $("#txtbCelularMadre").val(),
+                    orquesta: $("#orquesta").val(),
+                    instrumentoId: $("#instrumento").val(),  // Convierte el valor a entero si es necesario
+                   // rutaFoto: "",  // Agrega el valor correspondiente si tienes un campo para la ruta de la foto
+                    activo: true,  // o false según sea necesario
+                    asegurado: false,  // o false según sea necesario
+                    tmtMédico: $("#txtbtratamientoCual").val(),  // Agrega el valor correspondiente si tienes un campo para el TMT Médico
+                    epPsicoMotriz:  $("#txtbpsicomotrizCual").val(),  // Agrega el valor correspondiente si tienes un campo para la EP Psico-Motriz
+                    particularidad:  $("txtbParticularidadCual").val(),  // Agrega el valor correspondiente si tienes un campo para la particularidad
+                    autoretiro: false  // o false según sea necesario
                 };
 
                 // Puedes imprimir los datos en la consola para verificar que se están recopilando correctamente
@@ -74,7 +137,7 @@
                     data: JSON.stringify(formData),
                     dataType: "json",
                     success: function (data) {
-                        //  alert("Solicitud exitosa");  // Mensaje de éxito, puedes cambiarlo según tu necesidad
+                          alert("Solicitud exitosa");  // Mensaje de éxito, puedes cambiarlo según tu necesidad
                         // console.log(data); // Aquí accedes al cuerpo de la respuesta
                         //  console.log(data.Estudiante); // Puedes acceder a propiedades específicas si las hay
                     },
