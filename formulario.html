@@ -107,9 +107,11 @@
             <label for="txtbCelularAlumno">CEL:</label>
             <input type="tel" id="txtbCelularAlumno" name="txtbCelularAlumno" required pattern="[0-9]+"
                 title="Por favor, introduce solo números">
+                
                 <label for="txtbEmailAlumno">Email:</label>
-                <input type="tel" id="txtbEmailAlumno" name="txtbEmailAlumno" 
+                <input type="text" id="txtbEmailAlumno" name="txtbEmailAlumno" 
                 required>
+                
                 <br>
                 <br>
 
@@ -141,10 +143,10 @@
                 <option value="">Seleccionar...</option>
 
                 <option value="Pre-Orquesta">Pre-Orquesta</option>
-                <option value="Taller">Taller de iniciación Musical</option>
-                <option value="Inicial">Orquesta Inicial</option>
-                <option value="Juvenil">Orquesta Juvenil</option>
-                <option value="Danza">Kusikuy Danza</option>
+                <option value="Taller de Iniciación Musical">Taller de Iniciación Musical</option>
+                <option value="Orquesta Inicial">Orquesta Inicial</option>
+                <option value="Orquesta Juvenil">Orquesta Juvenil</option>
+                <option value="Taller Danza Kusikuy">Taller Danza Kusikuy</option>
             </select>
 
 
@@ -154,16 +156,16 @@
             <select id="instrumento" name="instrumento" required>
                 <option value="">Seleccionar...</option>
 
-                <option value="Contrabajo">Contrabajo</option>
-                <option value="Violin">Violín</option>
-                <option value="Viola">Viola</option>
-                <option value="Violoncello">Violoncello</option>
-                <option value="Guitarra">Guitarra</option>
-                <option value="Percusión">Percusión</option>
-                <option value="Flauta">Flauta</option>
-                <option value="Clarinete">Clarinete</option>
-                <option value="Bandoneon">Bandoneón</option>
-                <option value="Bandoneon">Trompeta</option>
+                <option value="9">Contrabajo</option>
+                <option value="6">Violín</option>
+                <option value="10">Viola</option>
+                <option value="11">Violoncello</option>
+                <option value="12">Guitarra</option>
+                <option value="13">Percusión</option>
+                <option value="14">Flauta</option>
+                <option value="15">Clarinete</option>
+                <option value="16">Bandoneón</option>
+                <option value="17">Trompeta</option>
             </select>
 
             <br>
@@ -171,9 +173,9 @@
             <label for="profesor">Profesor:</label>
             <select id="profesor" name="profesor" disabled>
                 <option value="">Seleccionar Profesor...</option>
-                <option value="Pablo">Pablo</option>
-                <option value="Tamy">Tamy</option>
-                <option value="Caro">Caro</option>
+                <option value="Violin Pablo">Pablo</option>
+                <option value="Violin Tamara">Tamara</option>
+                <option value="Violin Carolina">Carolina</option>
             </select>
             <br>
             <br>
@@ -254,7 +256,7 @@
             <button id="btnLeer" >Leer</button>
 
             <!-- Botón de Registro -->
-            <button type="submit">Registrar</button>
+            <button  id="btnRegistrar" type="submit">Registrar</button>
             <br>
             <!-- Nota al pie -->
             <p>* Doc. que acompaña: partida de nacimiento, fot. dni (alum madre padre), certificado judicial de

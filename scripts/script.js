@@ -1,34 +1,36 @@
-        $(document).ready(function () {
-            var orquestaSelect = $("#orquesta");
-            var instrumentoSelect = $("#instrumento");
+$(document).ready(function () {
+    var orquestaSelect = $("#orquesta");
+    var instrumentoSelect = $("#instrumento");
+    var profesorSelect = $("#profesor"); // Declarar el select de profesor fuera de la función change
+    var formData = {};
+    // Registra el evento change en el select de orquesta
+    orquestaSelect.change(function () {
+        // Obtiene el valor seleccionado en el select de orquesta
+        var selectedOrquesta = $(this).val();
 
-            // Registra el evento change en el select de orquesta
-            orquestaSelect.change(function () {
-                // Obtiene el valor seleccionado en el select de orquesta
-                var selectedOrquesta = $(this).val();
-
-                // Habilita o deshabilita el select de instrumento según la opción seleccionada en orquesta
-                if (selectedOrquesta === "Inicial" || selectedOrquesta === "Juvenil") {
-                    instrumentoSelect.prop("disabled", false);
-                    instrumentoSelect.removeClass("disabled");
-                } else {
-                    instrumentoSelect.prop("disabled", true);
-                    instrumentoSelect.addClass("disabled");
-                }
-            })
-            $('#instrumento').change(function(){
-                var instrumentoSelect = $("#instrumento");
-                var profesorSelect = $("#profesor"); // Debes seleccionar el elemento profesor dentro de esta función
-                
-                if (instrumentoSelect.val() == "Violin") { // Asegúrate de que coincida exactamente con el valor de la opción
-                    // Si se selecciona "Violín", habilita la lista de profesores
-                    profesorSelect.prop('disabled', false); // Usa prop() para habilitar/deshabilitar elementos
-                } else {
-                    // Si se selecciona otro instrumento, deshabilita la lista de profesores y selecciona la opción predeterminada
-                    profesorSelect.prop('disabled', true);
-                    profesorSelect.val(""); // Restablece el valor seleccionado
-                }
-            });
+        // Habilita o deshabilita el select de instrumento según la opción seleccionada en orquesta
+        if (selectedOrquesta === "Orquesta Inicial" || selectedOrquesta === "Orquesta Juvenil") {
+            instrumentoSelect.prop("disabled", false);
+            instrumentoSelect.removeClass("disabled");
+        } else {
+            instrumentoSelect.prop("disabled", true);
+            instrumentoSelect.addClass("disabled");
+            // También puedes restablecer el valor seleccionado en el select de instrumento
+            instrumentoSelect.val(""); // Esto evita que el valor seleccionado anteriormente permanezca después de deshabilitar el select
+        }
+    });
+    // Registra el evento change en el select de instrumento
+    instrumentoSelect.change(function () {
+        // Aquí puedes agregar la lógica para manejar los cambios en el select de instrumento
+        if (parseInt($(this).val()) == 6) {
+            // Si se selecciona "Violín", habilita la lista de profesores
+            profesorSelect.prop('disabled', false);
+        } else {
+            // Si se selecciona otro instrumento, deshabilita la lista de profesores y selecciona la opción predeterminada
+            profesorSelect.prop('disabled', true);
+            profesorSelect.val(""); // Restablece el valor seleccionado
+        }
+    });
             
 
             $('#chkMenor18').change(function() {
@@ -86,16 +88,14 @@
             });
             
 
-            
-
-            $("#btnLeer").click(function () {
+            $("#btnLeer").click(function (e) {
+                e.preventDefault(); // Evita el envío automático del formulario al hacer clic en el botón "Aceptar" del alert
                 // Muestra un alert con el texto especificado
                 alert("Quien suscribe, en carácter de padre, madre, responsable o tutor, o por derecho propio, autorizo sin límites de tiempo ni vigencia, en virtud del carácter educativo y cultural de Templar Orquesta Escuela Infanto Juvenil Asociación Civil, a realizar uso de la imagen del estudiante o de ser mayor de mi propia imagen, en materiales audiovisuales, quedando autorizada 'Templar', a difundir y publicar las imágenes en redes sociales y diversos medios de comunicación, ello preservando el honor del mismo, garantizando los derechos humanos, de los adolescentes y los niños/as. Garantiza asimismo su derecho a voz en los mismos términos.");
             });
-
             $("#checkCesion").change(function () {
-                // Habilita o deshabilita el botón de "Leer" según si el checkbox está marcado o no
-                $("#btnLeer").prop("disabled", !this.checked);
+                // Habilita o deshabilita el botón de "Registrar" según si el checkbox está marcado o no
+                $("#btnRegistrar").prop("disabled", !this.checked);
             });
 
             $("form").submit(function (event) {
@@ -107,13 +107,15 @@
                             v = c === 'x' ? r : (r & 0x3 | 0x8);
                         return v.toString(16);
                     });
+
+
                 }
 
                 // Llamas a la función para obtener un nuevo GUID
                 var nuevoGuid = generateGuid();
 
                 // Obtén los valores de los campos del formulario
-                var formData = {
+                    formData = {
                     estudianteId: nuevoGuid,  // Puedes generar un nuevo GUID si es necesario
                     nombre: $("#txtbNombres").val(),
                     apellido: $("#txtbApellidos").val(),
@@ -122,7 +124,7 @@
                     direccion: $("#txtbDomicilio").val(),
                     nacionalidad: $("#nacionalidad").val(),
                     telefono: $("#txtbCelularAlumno").val(),  
-                    email: $("txtbEmailAlumno").val(),  // Agrega el valor correspondiente si tienes un campo para el email
+                    email: $("#txtbEmailAlumno").val(),  // Agrega el valor correspondiente si tienes un campo para el email
                     nombreTutor: $("#txtbNombrePadre").val(),
                     documentoTutor: $("#txtbDNIPadre").val(),
                     nombreTutor2: $("#txtbNombreMadre").val(),
@@ -130,14 +132,14 @@
                     telefonoTutor: $("#txtbCelularPadre").val(),
                     telefonoTutor2: $("#txtbCelularMadre").val(),
                     orquesta: $("#orquesta").val(),
-                    instrumentoId:parseInt($("#instrumento").val()),
+                    instrumentoId: parseInt($("#instrumento").val()), // Convertir el valor a entero
                     cursoProfe:$("#profesor").val(),
                    // rutaFoto: "",  // Agrega el valor correspondiente si tienes un campo para la ruta de la foto
                     activo: true,  // o false según sea necesario
                     asegurado: false,  // o false según sea necesario
                     tmtMédico: $("#txtbtratamientoCual").val(),  // Agrega el valor correspondiente si tienes un campo para el TMT Médico
                     epPsicoMotriz:  $("#txtbpsicomotrizCual").val(),  // Agrega el valor correspondiente si tienes un campo para la EP Psico-Motriz
-                    particularidad:  $("txtbParticularidadCual").val(),  // Agrega el valor correspondiente si tienes un campo para la particularidad
+                    particularidad:  $("#txtbParticularidadCual").val(),  // Agrega el valor correspondiente si tienes un campo para la particularidad
                     autoretiro: false  // o false según sea necesario
                 };
 
