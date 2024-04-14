@@ -9,7 +9,7 @@
 
 <div class="login">
     <h1>Login INSCRIPCIÓN OESAT</h1>
-    <form id="loginForm" method="post" action="/InscripcionOESAT/formulario.html">
+    <form id="loginForm" method="post" action="https://storage.googleapis.com/inscripcionoesat/formulario.html">
         <input type="text" id="email" name="u" placeholder="Email" required="required" />
         <input type="password" id="password" name="p" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
@@ -19,7 +19,7 @@
 <script>
     document.getElementById("loginForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Evita el envío del formulario predeterminado
-        var url = 'https://localhost:5001/orquestaGateway/login';
+        var url = 'https://jwtauthapi.azurewebsites.net/usuario/login';
         var emailInput = document.getElementById("email").value;
         var passwordInput = document.getElementById("password").value;
 
@@ -45,7 +45,7 @@
         localStorage.setItem("accessToken", data.token);
 
         // Redirige al formulario.html
-        window.location.href = "/InscripcionOESAT/formulario.html";
+        window.location.href = "https://storage.googleapis.com/inscripcionoesat/formulario.html";
     })
         .catch(error => {
             // Si ocurre un error en la autenticación, muestra un mensaje de error

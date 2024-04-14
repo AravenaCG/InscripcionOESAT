@@ -155,24 +155,24 @@
             <label for="instrumento">Instrumento:</label>
             <select id="instrumento" name="instrumento" required>
                 <option value="">Seleccionar...</option>
-
-                <option value="9">Contrabajo</option>
-                <option value="6">Violín</option>
-                <option value="10">Viola</option>
-                <option value="11">Violoncello</option>
-                <option value="12">Guitarra</option>
-                <option value="13">Percusión</option>
-                <option value="14">Flauta</option>
-                <option value="15">Clarinete</option>
-                <option value="16">Bandoneón</option>
-                <option value="17">Trompeta</option>
+                <option value="5" data-value="Contrabajo">Contrabajo</option>
+                <option value="1" data-value="Violín">Violín</option>
+                <option value="6" data-value="Viola">Viola</option>
+                <option value="4" data-value="Violoncello">Violoncello</option>
+                <option value="7" data-value="Guitarra">Guitarra</option>
+                <option value="8" data-value="Percusión">Percusión</option>
+                <option value="2" data-value="Flauta">Flauta</option>
+                <option value="9" data-value="Clarinete">Clarinete</option>
+                <option value="10" data-value="Bandoneón">Bandoneón</option>
+                <option value="3" data-value="Trompeta">Trompeta</option>
             </select>
-
+            
             <br>
             <br>
             <label for="profesor">Profesor:</label>
             <select id="profesor" name="profesor" disabled>
                 <option value="">Seleccionar Profesor...</option>
+                <option value="sinClases">No toma clases</option>
                 <option value="Violin Pablo">Pablo</option>
                 <option value="Violin Tamara">Tamara</option>
                 <option value="Violin Carolina">Carolina</option>
@@ -185,15 +185,13 @@
 
 
             <!-- Sección Autorización y Tratamiento Médico -->
-            <div class="form-section">
-                <label>Autoriza a retirar solo/a del establecimiento de la Orquesta:</label>
-                <div class="radio-container">
-                    <input type="radio" id="autorizaSi" name="autoriza" value="SI">
-                    <label class="radio-label" for="autorizaSi">SI</label>
-                    <input type="radio" id="autorizaNo" name="autoriza" value="NO">
-                    <label class="radio-label" for="autorizaNo">NO</label>
-                </div>
-            </div>
+         <div class="form-section">
+        <label>Autoriza a retirar solo/a del establecimiento de la Orquesta:</label>
+            <div class="checkbox-container">
+           <input type="checkbox" id="autorizaCheckbox" name="autorizaCheckbox" value="SI">
+        <label class="checkbox-label" for="autorizaCheckbox">Autorizo</label>
+        </div>
+
 
             <!-- Sección Episodio Psicomotriz y Particularidad -->
             <div class="form-section">
